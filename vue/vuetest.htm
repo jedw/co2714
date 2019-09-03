@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<script src="vue.js"></script>
+<title>Vuetest</title>
+<style>
+.red{
+	border: 2px solid red;
+	}
+.green{
+	border: 2px solid green;
+}
+</style>
+</head>
+
+<body>
+<div v-if="count === 1" id="root">
+	
+	
+	<h1 v-once="greeting">{{greeting}}</h1>
+	<h1>{{greeting}}</h1>
+	
+	<label for="something">Type something here:</label>
+	<input name="something" v-model="greeting" v-bind:class="[greeting.length < 2 ? 'red' : 'green']">
+	
+	<button onclick="alert('success')" v-bind:disabled="greeting.length < 8">Submit</button>
+	
+</div>
+<script>
+	
+new Vue({
+	el:'#root',
+	data:{
+		greeting:'Hello Vue',
+		count:1
+		}
+})
+
+</script>
+</body>
+</html>

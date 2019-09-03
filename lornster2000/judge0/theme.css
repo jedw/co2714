@@ -1,0 +1,16 @@
+body {
+	background-color:#ABC;
+}
+
+#output{
+	background-color:#000;
+	color:#FFF;
+	font-family:consolas, courier;
+}
+
+#error{
+	background-color:#000;
+	color:#F00;
+	font-family:consolas, courier;
+}
+

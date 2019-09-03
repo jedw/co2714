@@ -1,0 +1,81 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class mycontroller extends CI_Controller {
+
+	public function index()
+	{
+		$this->load->view('welcome_message');
+	}
+	public function show()
+	{
+		$this->load->model('mymodel');
+		$data['records'] = $this->mymodel->getSomthing();
+		$this->load->view('showrows',$data);
+	}
+	
+	function insert()
+	{
+		$this->load->view('insertview');
+	}
+	
+	function insert_post()
+	{
+		$this->load->model('mymodel');
+		$this->form_validation->set_rules('forname', 'Forname');
+		$this->form_validation->set_rules('surname', 'Surname');
+		$this->form_validation->set_rules('age', 'Age');
+		
+		$data = array (
+        'Forname' => $this->input->post('forname'),
+        'Surname' => $this->input->post('surname'),
+        'Age' => $this->input->post('age')
+		);
+		$this->mymodel->insert($data);
+		echo "<p>Row inserted</p><a href=\"/ci\"> Back</a>";       //shouldn't really do this; breaks MVC pattern
+	}
+	
+	function check()
+	{
+		$this->load->view('check');
+	}
+  
+  	function check_post()
+	{
+		$this->load->model('mymodel');
+		
+		$this->form_validation->set_rules('forname', 'Forname');
+		$this->form_validation->set_rules('surname', 'Surname');
+		$this->form_validation->set_rules('age', 'Age');
+		
+		$data = array (
+        'Forname' => $this->input->post('forname'),
+        'Surname' => $this->input->post('surname'),
+        'Age' => $this->input->post('age')
+		);
+    
+		$check =  $this->mymodel->check($data);
+		if ($check)
+		{
+		 echo "record exists <a href=\"/ci\"> Back</a>";    //shouldn't really do this; breaks MVC pattern
+		}
+		else
+		{
+		 echo "record not found <a href=\"/ci\"> Back</a>";   //shouldn't really do this; breaks MVC pattern
+		}  
+	}
+  
+	  function delete()
+	  {
+		  $this->load->view('deleteview');
+	  }
+	  
+	  function delete_post()
+	  {
+		  $this->load->model('mymodel');
+		  $data["recordid"] = $this->input->post('id');
+		  $this->mymodel->delete($data);
+		  redirect('/Mycontroller/showrows', 'refresh');
+	  }
+}
+?>

@@ -1,0 +1,25 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Jonathan Edwards's CodeIgniter example</title>
+	<style type="text/css">
+	a {
+  		font-family:"Calibri","Tahoma";
+  		font-size:1.1em;
+		}
+	</style>
+</head>
+<body>
+<h1>Homepage</h1>
+<a href="index.php/Welcome/show">Show Rows Example</a>
+
+<a href="index.php/Welcome/insert">Insert Record</a>
+
+<a href="index.php/Welcome/check">Check for Record</a>
+
+<a href="index.php/Welcome/delete">Delete Record</a>
+</body>
+</html>

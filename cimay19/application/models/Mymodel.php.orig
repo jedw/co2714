@@ -1,0 +1,45 @@
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class mymodel extends CI_Model {
+	
+	public function __construct()
+        {
+                parent::__construct();
+        }
+
+    public function getSomthing () {
+        $q = $this->db->get('mytable','asc');
+        if ($q->num_rows()>0) {
+            foreach ($q->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
+
+    public function insert($data) {
+
+        $this->db->insert('mytable',$data);
+    }
+
+    public function check ($data) {
+
+        $q = $this->db->get_where('mytable', array('Forname' => $data['Forname'], 'Surname' => $data['Surname'], 'Age' => $data['Age']),1,0);
+
+        if ($q->num_rows()>0) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function delete($data) {
+
+        $this->db->delete('mytable', array('id' => $data["recordid"]));
+
+    }
+}
