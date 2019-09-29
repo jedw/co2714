@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
 		  $em = $row['email'];
 		  $pw = $row['password'];
 	  }
-  
+}
 	?>
 	<h1>Edit record:</h1>
 <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="post" >
@@ -57,7 +57,7 @@ if ($result->num_rows > 0) {
 </body>
 </html>
 <?php
-	}
+	
 }
 }
 	?>
