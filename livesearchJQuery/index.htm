@@ -3,34 +3,40 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	var response;
+	var promise = [];
 
     function getAll() {
-    $.ajax({
+    promise.push   ($.ajax({
             url: "staff.php", 
-            async:false,
+            async:true,
             success: function(data){
                 response = data; 
             },
             dataType:"json"
-    });   
+    }));
+      
 		updateTable(); 
+		promise = [];
+		
 	}
 
 	function mySearch() {
 		var searchString = document.getElementById("search").value;
 		var dataString = 'search='+searchString;
 		
-		$.ajax({
+		promise.push   ($.ajax({
 				url:  "staff.php",
 				type: "POST",
-				async:false,
+				async:true,
 				data: dataString,
 				success: function(data){
 					response = data; 
 				},
 				dataType:"json"
-	}); 
+	})); 
 		updateTable();
+		promise = [];
+		
 	}	
 
 </script>
@@ -57,13 +63,14 @@
 		<tr>
         <script>
         function updateTable() {
+			$.when.apply($, promise).then(function(){
 			$("#records_table").empty();
-		$.each(response, function(i, item) {
-			var $tr = $('<tr>').append(
+			$.each(response, function(i, item) {
+				var $tr = $('<tr>').append(
 				$('<td>').text(item.firstname),
-				$('<td>').text(item.lastname)
-			).appendTo('#records_table');
-				});
+				$('<td>').text(item.lastname)).appendTo('#records_table');
+			});
+			});
 		}
         </script>
     </table>     

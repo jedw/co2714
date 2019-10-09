@@ -14,7 +14,7 @@ else
 	$sql = "select firstname, lastname from members where firstname like '%$search%' or lastname like '%$search%' ORDER BY lastname ASC";
 }
 $query = $conn->query($sql);
-$STAFF = array();
+$staff = array();
 
 while($row = $query->fetch_array()){
 	array_push($staff, $row);
