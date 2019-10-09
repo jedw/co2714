@@ -14,14 +14,14 @@ else
 	$sql = "select firstname, lastname from members where firstname like '%$search%' or lastname like '%$search%' ORDER BY lastname ASC";
 }
 $query = $conn->query($sql);
-$cats = array();
+$STAFF = array();
 
 while($row = $query->fetch_array()){
-	array_push($cats, $row);
+	array_push($staff, $row);
 }
 
 $conn->close();
 
 header("Content-type: application/json");
-echo json_encode($cats);
+echo json_encode($staff);
 die();
