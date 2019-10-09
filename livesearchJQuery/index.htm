@@ -40,7 +40,7 @@
 	}	
 
 </script>
-<title>Vuetest</title>
+<title>Livesearch</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -59,14 +59,13 @@
     <input type="search" onkeyup="mySearch()" onblur="getAll()" class="form-control" name="search" id="search" type="text"/>
     <br>
     <table class="table" id="records_table">
-		<tr><th>Firstname</th><th>Lastname</th></tr>
-		<tr>
+		<tr><th>Firstname</th><th>Surname</th></tr>
         <script>
         function updateTable() {
 			$.when.apply($, promise).then(function(){
-			$("#records_table").empty();
+			$(".member").empty();
 			$.each(response, function(i, item) {
-				var $tr = $('<tr>').append(
+				var $tr = $('<tr class="member">').append(
 				$('<td>').text(item.firstname),
 				$('<td>').text(item.lastname)).appendTo('#records_table');
 			});
