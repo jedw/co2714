@@ -6,39 +6,34 @@
 	var promise = [];
 
     function getAll() {
-    promise.push   ($.ajax({
-            url: "staff.php", 
-            async:true,
-            success: function(data){
-                response = data; 
-            },
-            dataType:"json"
-    }));
-      
+		promise.push   ($.ajax({
+			url: "staff.php", 
+			async:true,
+			success: function(data){
+				response = data; 
+			},
+			dataType:"json"
+		}));
 		updateTable(); 
-		promise = [];
-		
+		promise = [];		
 	}
 
 	function mySearch() {
 		var searchString = document.getElementById("search").value;
 		var dataString = 'search='+searchString;
-		
 		promise.push   ($.ajax({
-				url:  "staff.php",
-				type: "POST",
-				async:true,
-				data: dataString,
-				success: function(data){
-					response = data; 
-				},
-				dataType:"json"
-	})); 
+			url:  "staff.php",
+			type: "POST",
+			async:true,
+			data: dataString,
+			success: function(data){
+				response = data; 
+			},
+			dataType:"json"
+		})); 
 		updateTable();
 		promise = [];
-		
 	}	
-
 </script>
 <title>Livesearch</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -63,12 +58,12 @@
         <script>
         function updateTable() {
 			$.when.apply($, promise).then(function(){
-			$(".member").empty();
-			$.each(response, function(i, item) {
-				var $tr = $('<tr class="member">').append(
-				$('<td>').text(item.firstname),
-				$('<td>').text(item.lastname)).appendTo('#records_table');
-			});
+				$(".member").empty();
+				$.each(response, function(i, item) {
+					var $tr = $('<tr class="member">').append(
+					$('<td>').text(item.firstname),
+					$('<td>').text(item.lastname)).appendTo('#records_table');
+				});
 			});
 		}
         </script>
