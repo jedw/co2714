@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+<title>test</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+function myFunction(){
+	var thingy = $('#mytextbox').val();
+	$('#message').empty();
+	$('#message').append(thingy);
+}
+
+</script>
+</head>
+<body>
+	Input: <input type="textbox" id="mytextbox" name="mytextbox" onkeyup="myFunction();"/>
+	
+	<p id="message"></p>
+</body>
+</html>

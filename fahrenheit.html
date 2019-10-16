@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<title>Fahrenheit</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+function myFunction(){
+	var fahinput = parseFloat($('#myfahrenheit').val());
+	var centi = (fahinput - 32) / 1.8;
+	$('#degrees').empty();
+	$('#degrees').append(centi+" C");
+	if(fahinput <= 32)
+	{
+		$('#degrees').css("color","#0ff");
+	}
+	else if (fahinput > 32 && fahinput <= 50)
+	{
+		$('#degrees').css("color","#0f0");
+	}
+	else if (fahinput > 50 && fahinput <= 70)
+	{
+		$('#degrees').css("color","#ff0");
+	}
+	else if (fahinput > 70 && fahinput <= 90)
+	{
+		$('#degrees').css("color","#f60");
+	}
+	else if (fahinput > 90)
+	{
+		$('#degrees').css("color","#f00");
+	}
+}
+
+</script>
+</head>
+<body>
+	Fahrenheit: <br><input type="textbox" id="myfahrenheit" name="myfahrenheit" onkeyup="myFunction();"/><br>
+	Centigrade: <p id="degrees"></p>
+</body>
+</html>
