@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<title>Toggle</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#mytoggle").click(function(){
+		var mystate = $("#mytoggle").html();
+		if (mystate === "TRUE")
+		{
+			$("#mytoggle").html("FALSE");
+		}
+		else
+		{
+			$("#mytoggle").html("TRUE");
+		}
+	});
+});
+</script>
+</head>
+<body>
+<h1 id="mytoggle">TRUE</h1>
+</body>
+</html>

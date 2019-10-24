@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+<title>jQuery Temperature Converter</title>
+<style>
+#cent, #fah2 {
+	font-size:1.6em;
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#fah").keyup(function(){
+		$('#message').empty();
+		var ftemp = parseFloat($('#fah').val());
+		var cent = (ftemp - 32) / 1.8; 
+		$('#cent').empty();
+		$('#cent').append(cent+" ˚C");
+		if (ftemp <= 32)
+		{
+			$('#message').html("Sh*t my tongues stuck to the lamppost");
+			$('#fah').css("background-color","#6af");
+		}
+		else if (ftemp > 32 && ftemp < 50)
+		{
+			$('#message').html("Brrr.. bit chilly!");
+			$('#fah').css("background-color","#6Fa");
+		}
+		else if (ftemp > 50 && ftemp < 70)
+		{
+			$('#message').html("Just nice!");
+			$('#fah').css("background-color","#ff6");
+		}
+		else if (ftemp > 70)
+		{
+			$('#message').html("Scorchio!");
+			$('#fah').css("background-color","#fa6");
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="container">
+<h1>Jonathan's jQuery temperature convertor</h1>
+<h2>F to C</h2>
+	Fahrenheit: <input type="textbox" id="fah" name="fah"/>
+	<br>
+	Centigrade: <p id="cent"></p>
+	<p id="message"></p>
+	
+
+	</div>
+</body>
+</html>

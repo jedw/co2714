@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+	<title>Add to a list</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#addto").click(function(){
+		var newItem = "<li>"+$("#inputbox").val()+"</li>";
+			$("#mylist").append(newItem);
+		});
+		$("#clearlist").click(function(){
+			$("#mylist").empty();
+		});
+	});
+	</script>
+</head>
+<body>
+<h1>Add things to a list</h1>
+<input type="textbox" id="inputbox"/>
+<button id="addto">Click to add</button>
+<button id="clearlist">Click to clear list</button>
+
+<ul id="mylist">
+
+</ul>
+</body>
+</html>

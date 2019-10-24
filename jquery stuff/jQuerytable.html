@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery add records to table</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#submitBtn").click(function(){
+			if($("#fname").val() == "" || $("#sname").val() == "" || $("#email").val() == "" )
+			{
+				alert("Please fill out all fields");
+			}
+			else
+			{
+				var myFName = $("#fname").val();
+				var mySName = $("#sname").val();
+				var myEmail = $("#email").val();
+				
+				$("#liveTable").append("<tr><td>"+myFName+"</td><td>"+mySName+"</td><td>"+myEmail+"</td></tr>");
+				$("#fname").val('');
+				$("#sname").val('');
+				$("#email").val('');
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="container">
+	<h1>jQuery add records to table</h1>
+	<p>First name: </p><input type="textbox" class="form-control" id="fname"/>
+	<p>Surname: </p><input type="textbox" class="form-control" id="sname"/>
+	<p>Email Address: </p><input type="textbox" class="form-control" id="email"/>
+	<br>
+	<button class="btn btn-primary" id="submitBtn">Submit</button>
+	<br><br>
+	<table class="table" id="liveTable">
+		<thead>
+			<tr>
+				<th>First Name</th><th>Surname</th><th>Email</th>
+			</tr>
+		</thead>
+	</table>
+	</div>
+	</body>
+</html>

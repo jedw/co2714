@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+<title>Temperature Converter</title>
+<style>
+#cent, #fah2 {
+	font-size:1.6em;
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    function myFToC()
+	{
+		$('#message').empty();
+		var ftemp = parseFloat($('#fah').val());
+		var cent = (ftemp - 32) / 1.8; 
+		$('#cent').empty();
+		$('#cent').append(cent);
+		if (ftemp <= 32)
+		{
+			$('#message').html("Sh*t that's freezin'");
+			$('#fah').css("background-color","#6af");
+		}
+		else if (ftemp > 32 && ftemp < 70)
+		{
+			$('#message').html("Just nice!");
+			$('#fah').css("background-color","#ff6");
+		}
+		else if (ftemp > 70)
+		{
+			$('#message').html("Scorchio!");
+			$('#fah').css("background-color","#fa6");
+		}
+	}
+	
+	function myCToF()
+	{
+		var ctemp = parseFloat($('#cent2').val());
+		var fah = (ctemp * 1.8) + 32; 
+		$('#fah2').empty();
+		$('#fah2').append(fah);
+	}
+</script>
+</head>
+
+<body>
+<div class="container">
+<h1>Jonathan's temperature convertor</h1>
+<h2>F to C</h2>
+	Fahrenheit: <input type="textbox" id="fah" name="fah" onkeyup="myFToC();"/>
+	<br>
+	Centigrade: <p id="cent"></p>
+	<p id="message"></p>
+	
+<h2>C to F</h2>	
+	Centigrade: <input type="text" id="cent2" name="cent2" onkeyup="myCToF();"/>
+	<br>
+	Fahrenheit: <p id="fah2"></p>
+	</div>
+</body>
+</html>

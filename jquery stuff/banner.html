@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+	<title>Banner</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#inputbox").keyup(function(){
+			var bannertext = $("#inputbox").val();
+			if (bannertext === "")
+			{
+				bannertext = "Banner";
+			}
+			$("#mybanner").html(bannertext);
+		});
+	});
+	</script>
+</head>
+<body>
+<h1 id="mybanner">Banner</h1>
+<p>Type something into the box:</p> <input type="textbox" id="inputbox"/>
+
+</body>
+</html>
