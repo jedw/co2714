@@ -14,4 +14,7 @@
 	$stmt = $mysqli->prepare("INSERT into comments (comment) VALUES (?)");
 	$stmt->bind_param('s', $com);
 	$success = $stmt->execute(); 
+	
+	$stmt->close();
+	$mysqli->close();
 ?>
