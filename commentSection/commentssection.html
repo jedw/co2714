@@ -6,6 +6,25 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
+	
+	var comments;
+	var promise = [];
+	promise.push (
+		$.ajax({
+			url: "retreiveComments.php",
+			success: function(data){
+				comments = data;
+			},
+			datatype: "json"
+		})
+	);
+	
+	$.when.apply($, promise).then(function(){
+		$.each(comments, function(i, item) {
+			$("#comments").append("<div class=\"comment\">"+item.comment+"</div>");
+		});
+	});
+	
 	var newComment;
 	$("#addComment").click(function(){
 		newComment = $("#myComment").val();
@@ -15,7 +34,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url: "insertComment.php",
-			type: POST,
+			type: "POST",
 			data: dataString,
 			success: function(data){
 				console.log('success');
@@ -44,7 +63,7 @@ $(document).ready(function(){
 			<h2>"I definitely don't not disagree with these thar dooins' afoot. Down with the government. My opinions are important.. love me"</h2>
 		</div>
 		<div id="comments">
-			<div class="comment">I disagree!</div>
+			<!-- comments will be added here -->
 		</div>
 		<p>Add a comment:</p>
 		<textarea id="myComment" rows="6" cols="50"></textarea>
