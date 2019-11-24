@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ChartJS</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+<canvas id="myChart"></canvas>
+<script>
+var myLabels = [];
+var myData = [];
+var myBColors = [];
+var myColors = [];
+
+    var chartData;
+	var promise = [];
+	promise.push (
+		$.ajax({
+			url: "retrieveChartData.php",
+			success: function(data){
+				chartData = data;
+			},
+			datatype: "json"
+		})
+	);
+	
+	$.when.apply($, promise).then(function(){
+		$.each(chartData, function(i, item) {
+			myLabels.push(item.label);
+            myData.push(item.data)
+            myColors.push(item.color)
+            myBColors.push(item.bcolor)
+		});
+
+var ctx = document.getElementById('myChart').getContext('2d');
+
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: myLabels,
+        datasets: [{
+            label: '# Score on test',
+            data: myData,
+            backgroundColor: myColors,
+            borderColor: myBColors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+});
+</script>
+</body>
+</html>
