@@ -13,8 +13,10 @@
         <label for="submit">Submit:</label><input id="inputSubmit" type="submit"/>
         <canvas id="myChart" width="100"></canvas>
         <script>
+        var color = true;    
         var myLabels = [];
         var myData = [];
+        var myColors = [];
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -24,8 +26,7 @@
                 datasets: [{
                     label: '# Data',
                     data: myData,
-                    backgroundColor: 'rgba(0,127,255,0.2)',
-                    borderColor: 'rgba(0,127,255,0.8)',
+                    backgroundColor: myColors,
                     borderWidth: 1
                 }]
             },
@@ -43,6 +44,15 @@
         $("#inputSubmit").click(function(){
             myLabels.push($("#inputLabel").val());
             myData.push($("#inputData").val());
+            color = !color;
+            if (color)
+            {
+                myColors.push('rgba(255,255,0,0.3)');
+            }
+            else
+            {
+                myColors.push('rgba(0,127,255,0.3)');  
+            }
             myChart.update();
         });
         </script>
