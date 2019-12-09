@@ -8,25 +8,27 @@
 					 var size;
 					 var space;
 					 var name;
+					 var decorAmount;
 					 var colours = ['f00','0f0', '00f', 'ff0', 'f0f', '0ff'];
 					 var decor = ['o', '*'];
 				 
 				$("#draw").click(function(){
 					size = $("#inputSize").val();
 					name = $("#inputName").val();
+					decorAmount = $("#inputDecor").val();
 					space = size;
 					$("#tree").empty();	
-					for (var i=0; i<=size; i++)
+					for (var i = 0; i <= size; i++)
 					{
 							
 						for (var k=0; k<space; k++)
 						{
 							$("#tree").append(" ");
 						}
-						for ( var j=0; j<2*i-1; j++)
+						for ( var j = 0; j < 2*i-1; j++)
 						{
 							
-							if (Math.floor(Math.random() * 5) == 1)
+							if (Math.floor(Math.random() * decorAmount) == 1)
 							{
 								$("#tree").append("<span style=\"color:#"+colours[Math.floor(Math.random() * colours.length)]+";\">"+decor[Math.floor(Math.random() * decor.length)]+"</span>");
 							}
@@ -35,12 +37,16 @@
 									$("#tree").append("^");
 							}
 						}
-						
-
 						space--;
 						$("#tree").append("<br>");
 					}
-					$("#tree").append("Merry Christmas "+name);
+					for (var k = 0; k < size-4; k++)
+						{
+							$("#tree").append(" ");
+						}
+					$("#tree").append("\\____/<br>");
+					
+					$("#tree").append("<br>Merry Christmas "+name);
 				});	
 			});
 			</script>
@@ -52,9 +58,11 @@
 			</style>
 		</head>
 	<body>
+		<h1>CO2714 Christmas lab</h1>
 		<pre id ="tree" style="color:#008822;"></pre>
 		Input Size: <br><input id="inputSize" type="text"><br>
 		Input Name: <br><input id="inputName" type="text"><br>
+		One in 'n' characters should be a decoration. n= : <br><input id="inputDecor" type="text"><br>
 		<button id="draw">Draw Tree</button>
 	</body>
 </html> 
