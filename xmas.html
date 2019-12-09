@@ -19,22 +19,22 @@
 					space = size;
 					$("#tree").empty();	
 					for (var i = 0; i <= size; i++)
-					{
-							
+					{	
 						for (var k=0; k<space; k++)
 						{
 							$("#tree").append(" ");
 						}
 						for ( var j = 0; j < 2*i-1; j++)
 						{
-							
 							if (Math.floor(Math.random() * decorAmount) == 1)
 							{
-								$("#tree").append("<span style=\"color:#"+colours[Math.floor(Math.random() * colours.length)]+";\">"+decor[Math.floor(Math.random() * decor.length)]+"</span>");
+								var color = colours[Math.floor(Math.random() * colours.length)];
+								var character = decor[Math.floor(Math.random() * decor.length)];
+								$("#tree").append("<span style=\"color:#"+color+";\">"+character+"</span>");
 							}
 							else
 							{
-									$("#tree").append("^");
+								$("#tree").append("^");
 							}
 						}
 						space--;
