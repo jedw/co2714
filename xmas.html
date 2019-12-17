@@ -12,12 +12,18 @@
 					 var colours = ['f00','0f0', '00f', 'ff0', 'f0f', '0ff'];
 					 var decor = ['o', '*'];
 				 
-				$("#draw").click(function(){
+				$("#draw").click(function drawTree() {
+					setTimeout(drawTree, 1000);
 					size = $("#inputSize").val();
 					name = $("#inputName").val();
 					decorAmount = $("#inputDecor").val();
 					space = size;
 					$("#tree").empty();	
+					for (var k = 0; k < size-1; k++)
+						{
+							$("#tree").append(" ");
+						}
+					$("#tree").append("<span style=\"color:#ff0;\">*</span>");
 					for (var i = 0; i <= size; i++)
 					{	
 						for (var k=0; k<space; k++)
