@@ -14,7 +14,7 @@
     </head>
     <body>
 		<div id="login">
-     <h1>Login, fool!</h1>
+     <h1>Welcome, please login</h1>
      <?php echo form_open('login_controller/checklogin');?>
 		 <label for="Username">Username: </label>
 		 <input type="text" name="Username" id="Username"/>
@@ -23,7 +23,8 @@
 		 <input type="password" name="Password" id="Password"/>
 		 <br/>
 		 <input type="submit" value="login"/>
-     <?php echo form_close();?>
+	 <?php echo form_close();?>
+	 <?php if (isset ($_GET['loginmsg'])) {echo "<p>".$_GET['loginmsg']."</p>";}?>
      </div>
     </body>
     </html>

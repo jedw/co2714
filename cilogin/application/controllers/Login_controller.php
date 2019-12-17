@@ -19,7 +19,6 @@ class login_controller extends CI_Controller {
 		$user = $this->login_model->check_user($data);
 		if ($user->num_rows() ==1)
 		{
-			
 			$loginsession = array (
 				'user' => $this->input->post('Username'),
 				'isloggedin' => true
@@ -29,6 +28,7 @@ class login_controller extends CI_Controller {
 		}
 		else
 		{
+			$_GET['loginmsg'] = "Login Failed please try again";
 			$this->index();
 		}
 	}
