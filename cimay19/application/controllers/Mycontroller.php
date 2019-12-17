@@ -34,22 +34,6 @@ class mycontroller extends CI_Controller {
         $this->mymodel->insert($data);
         $this->Show();
     }
-    
-       function editrow()
-    {
-        $this->load->model('mymodel');
-        
-
-        $data = array (
-                    'Forname' => $this->input->post('forname'),
-                    'Surname' => $this->input->post('surname'),
-                    'Age' => $this->input->post('age')
-                );
-        $id = $this->uri->segment(3);
-        $this->mymodel->editOneRow($data, $id);
-        $this->Show();
-    }
-
 
     function check()
     {
@@ -59,10 +43,6 @@ class mycontroller extends CI_Controller {
     function check_post()
     {
         $this->load->model('mymodel');
-
-        $this->form_validation->set_rules('forname', 'Forname');
-        $this->form_validation->set_rules('surname', 'Surname');
-        $this->form_validation->set_rules('age', 'Age');
 
         $data = array (
                     'Forname' => $this->input->post('forname'),
@@ -75,13 +55,11 @@ class mycontroller extends CI_Controller {
         {
 			$_GET['checkmsg'] = "Record found";
 			$this->check();
-            //echo "record exists <a href=\"".site_url('')."\">back</a>";  //shouldn't really do this; breaks MVC pattern
         }
         else
         {
 			$_GET['checkmsg'] = "Record not found";
 			$this->check();
-            //echo "record not found <a href=\"".site_url('')."\">back</a>";    //shouldn't really do this; breaks MVC pattern
         }
     }
     
@@ -113,7 +91,5 @@ class mycontroller extends CI_Controller {
 		$this->mymodel->editOneRow($data, $id);
 		$this->show();
 	}
-
-    
 }
 ?>
