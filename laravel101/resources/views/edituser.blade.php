@@ -44,10 +44,6 @@
                 text-align: center;
             }
 
-            .content table{
-                text-align: left;
-            }
-
             .title {
                 font-size: 84px;
             }

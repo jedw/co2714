@@ -49,6 +49,10 @@
                 color: #000;
             }
 
+            .content table td, th{
+                padding:1em;
+            }
+
             .title {
                 font-size: 84px;
             }
