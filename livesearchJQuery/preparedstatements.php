@@ -1,15 +1,15 @@
  <?php
-include 'connect2.php';
+include 'connect.php';
 
 if(!isset(($_POST['search']))||($_POST['search'] ===""))
 {
-    $stmt = $mysqli->prepare ("SELECT firstname, surname, email from livesearch ORDER BY surname ASC");
+    $stmt = $mysqli->prepare ("SELECT firstname, surname from users ORDER BY surname ASC");
 }
 else
 {
     $search = '%'.$_POST['search'].'%';
-    $stmt = $mysqli->prepare ("SELECT firstname, surname, email from livesearch where firstname like ? or surname like ? or email LIKE ? ORDER BY surname ASC");
-    $stmt->bind_param('sss', $search, $search, $search); 
+    $stmt = $mysqli->prepare ("SELECT firstname, surname from users where firstname like ? or surname like ? ORDER BY surname ASC");
+    $stmt->bind_param('ss', $search, $search); 
 }
 
 $stmt->execute();
