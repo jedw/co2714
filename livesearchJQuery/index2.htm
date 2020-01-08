@@ -4,11 +4,10 @@
 <script>
 	var response;
 	var promise = [];
-    $(document).ready(function(){
-
-		promise.push   ($.ajax({
+    	$(document).ready(function(){
+		promise.push($.ajax({
 			url: "staff.php", 
-			async:true,
+			async: true,
 			success: function(data){
 				response = data; 
 			},
@@ -17,13 +16,13 @@
 		updateTable(); 
 		promise = [];		
 
-    $("#search").keyup(function(){
-        var searchString = document.getElementById("search").value;
+	$("#search").keyup(function(){
+        	var searchString = document.getElementById("search").value;
 		var dataString = 'search='+searchString;
-		promise.push   ($.ajax({
-			url:  "staff.php",
+		promise.push($.ajax({
+			url: "staff.php",
 			type: "POST",
-			async:true,
+			async: true,
 			data: dataString,
 			success: function(data){
 				response = data; 
@@ -32,7 +31,7 @@
 		})); 
 		updateTable();
 		promise = [];
-    })
+    	})
 
 	function updateTable() {
 			$.when.apply($, promise).then(function(){
@@ -42,7 +41,7 @@
 				});
 			});
 		}	
-    })
+    	})
 </script>
 <title>Livesearch</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -61,7 +60,7 @@
     <input class="form-control" name="search" id="search" type="text"/>
     <br>
     <table class="table" id="records_table">
-		<tr><th>Firstname</th><th>Surname</th></tr>
+	<tr><th>Firstname</th><th>Surname</th></tr>
     </table>     
 </div>
 </div>
