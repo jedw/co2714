@@ -4,9 +4,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
 var myPoints = [
-    {lat:53.763703, lon: -2.708945},
-    {lat: 53.760367, lon: -2.704868},
-    {lat:53.757196, lon:-2.707379}
+    {lat:53.763703, lon: -2.708945, name: "Klaidas"},
+    {lat: 53.760367, lon: -2.704868, name: "Becki"},
+    {lat:53.757196, lon:-2.707379, name: "Mahfuzah"}
 ];	
 	function initialize() {
 		
@@ -21,6 +21,7 @@ var myPoints = [
 		for (i = 0; i < myPoints.length; i++) {
 		  marker = new google.maps.Marker({
 			position: new google.maps.LatLng(myPoints[i].lat, myPoints[i].lon),
+            title: myPoints[i].name,
 			map: map,
 		  })
 		}
