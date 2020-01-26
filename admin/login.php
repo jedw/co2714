@@ -29,7 +29,7 @@ $stmt->execute();
 
 $user = $stmt->get_result()->fetch_assoc();
 
-if (!empty($user['Email'])) { 
+if (!empty($user['Username'])) { 
     if (password_verify($password, $user['Password'])) {
         echo "<p>Login Sucessful</p>";
         session_start();
