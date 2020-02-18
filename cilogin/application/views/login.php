@@ -17,14 +17,16 @@
      <h1>Welcome, please login</h1>
      <?php echo form_open('login_controller/checklogin');?>
 		 <label for="Username">Username: </label>
+		 <br/>
 		 <input type="text" name="Username" id="Username"/>
 		 <br/>
 		 <label for="Password">Password: </label>
+		 <br/>
 		 <input type="password" name="Password" id="Password"/>
 		 <br/>
 		 <input type="submit" value="login"/>
 	 <?php echo form_close();?>
-	 <?php if (isset ($_GET['loginmsg'])) {echo "<p>".$_GET['loginmsg']."</p>";}?>
+	 <?php if (isset ($loginMsg)) {echo "<p>".$loginMsg."</p>";}?>
      </div>
     </body>
     </html>
