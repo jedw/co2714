@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 03, 2019 at 07:33 AM
--- Server version: 5.7.27-0ubuntu0.18.04.1
--- PHP Version: 7.2.19-0ubuntu0.18.04.2
+-- Generation Time: Feb 20, 2020 at 10:22 AM
+-- Server version: 5.7.29-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -85,6 +85,26 @@ CREATE TABLE `cicrud` (
 INSERT INTO `cicrud` (`id`, `title`, `content`) VALUES
 (1, 'Test', 'This is a test'),
 (2, 'Also', 'Here is another test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(3) NOT NULL,
+  `comment` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `comment`) VALUES
+(1, 'one'),
+(2, 'two'),
+(3, 'three');
 
 -- --------------------------------------------------------
 
@@ -201,6 +221,28 @@ INSERT INTO `mytable` (`ID`, `Forname`, `Surname`, `Age`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `things`
+--
+
+CREATE TABLE `things` (
+  `id` int(3) NOT NULL,
+  `thing` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `things`
+--
+
+INSERT INTO `things` (`id`, `thing`) VALUES
+(1, 'one'),
+(2, 'two'),
+(3, 'three'),
+(4, 'four'),
+(5, 'five');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -249,6 +291,12 @@ ALTER TABLE `cicrud`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `coords`
 --
 ALTER TABLE `coords`
@@ -279,6 +327,12 @@ ALTER TABLE `mytable`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `things`
+--
+ALTER TABLE `things`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -297,6 +351,11 @@ ALTER TABLE `cats`
 --
 ALTER TABLE `cicrud`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `coords`
 --
@@ -322,6 +381,11 @@ ALTER TABLE `members`
 --
 ALTER TABLE `mytable`
   MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `things`
+--
+ALTER TABLE `things`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
