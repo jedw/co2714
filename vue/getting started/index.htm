@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue</title>
+        <style>
+            .red{color:#f00}
+        </style>
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <!-- swap for above for the production version <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    </head>
+    <body>
+        <div id="app">
+            <h1>List:</h1>
+
+            <p>{{newItem}}</p>
+            <input v-model="newItem">
+
+            Highlight: <input type="checkbox" v-model="isHighlighted">
+
+            <button v-on:click="addItem" v-bind:disabled="newItem.length == 0">Click to add</button>
+            <button v-on:click="clearItems">Clear All Items</button>
+            
+            <ul v-for="item in items">
+                <li v-bind:class="{red: item.highlighted}">{{item.text}}</li>
+            </ul>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
