@@ -4,10 +4,11 @@
 <script>
 	var response;
 	var promise = [];
-    	$(document).ready(function(){
-		promise.push($.ajax({
+
+    function getAll() {
+		promise.push   ($.ajax({
 			url: "staff.php", 
-			async: true,
+			async:true,
 			success: function(data){
 				response = data; 
 			},
@@ -15,14 +16,15 @@
 		}));
 		updateTable(); 
 		promise = [];		
+	}
 
-	$("#search").keyup(function(){
-        	var searchString = document.getElementById("search").value;
+	function mySearch() {
+		var searchString = document.getElementById("search").value;
 		var dataString = 'search='+searchString;
-		promise.push($.ajax({
-			url: "staff.php",
+		promise.push   ($.ajax({
+			url:  "staff.php",
 			type: "POST",
-			async: true,
+			async:true,
 			data: dataString,
 			success: function(data){
 				response = data; 
@@ -31,36 +33,40 @@
 		})); 
 		updateTable();
 		promise = [];
-    	})
-
-	function updateTable() {
-			$.when.apply($, promise).then(function(){
-				$("#records_table tr:gt(0)").remove();
-				$.each(response, function(i, item) {
-				    $("#records_table").append("<tr><td>"+item.firstname+"</td><td>"+item.lastname+"</td></tr>")	
-				});
-			});
-		}	
-    	})
+	}	
 </script>
 <title>Livesearch</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
     li{
         list-style:none;
     }
 </style>
 </head>
-<body>
+
+<body onload="getAll()">
 <div class="container">
 <div id="root">
     <h1 class="display-3">Staff:</h1>
     <label for="search">Search:</label>
-    <input class="form-control" name="search" id="search" type="text"/>
+    <input type="search" onkeyup="mySearch()" onblur="getAll()" class="form-control" name="search" id="search" type="text"/>
     <br>
     <table class="table" id="records_table">
-	<tr><th>Firstname</th><th>Surname</th></tr>
+		<tr><th>Firstname</th><th>Surname</th></tr>
+        <script>
+        function updateTable() {
+			$.when.apply($, promise).then(function(){
+				$(".member").empty();
+				$.each(response, function(i, item) {
+					var $tr = $('<tr class="member">').append(
+					$('<td>').text(item.firstname),
+					$('<td>').text(item.lastname)).appendTo('#records_table');
+				});
+			});
+		}
+        </script>
     </table>     
 </div>
 </div>

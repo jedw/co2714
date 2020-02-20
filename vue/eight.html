@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Vue</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+
+Sign Up
+<br>
+<input v-model="email">
+<br>
+<button onclick="alert('signed up')" v-bind:disabled="email.length <2">
+<!-- common shortcut for v-bind is just a colon e.g. :disabled= -->
+	Submit
+</button>
+</div>
+<script>
+new Vue ({
+	el: '#root',
+	data: {
+		email: ''
+	}
+})
+</script>
+</body>
+</html>

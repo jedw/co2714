@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+<title>Comment section</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+	
+	$.ajax({
+		url: "retreiveComments.php",
+		success: function(data){
+			$.each(data, function(i, item) {
+				$("#comments").append("<div class=\"comment\">"+item.comment+"</div>");
+			});
+		},
+		datatype: "json"
+	})
+	
+	var newComment;
+	$("#addComment").click(function(){
+		newComment = $("#myComment").val();
+		$("#comments").append("<div class=\"comment\">"+newComment+"</div>");
+		
+		var dataString = "com="+newComment;
+		
+		$.ajax({
+			url: "insertComment.php",
+			type: "POST",
+			data: dataString,
+			success: function(data){
+				console.log('success');
+			}			
+		});
+	});
+});
+</script>
+<style>
+	.comment{
+		margin-top:1em;
+		border: solid 1px black;
+		padding:1em;
+	}
+	.post{
+		font-family:"Times New Roman";
+		font-style:italic;
+	}
+</style>
+</head>
+	<body>
+		<h1>iStalkr.com</h1>
+		<div class="container">
+		<h3>Billybob McNuggets posted..</h3>
+		<div class="post">
+			<h2>"I definitely don't not disagree with these thar dooins' afoot. Down with the government. My opinions are important.. love me"</h2>
+		</div>
+		<div id="comments">
+			<!-- comments will be added here -->
+		</div>
+		<p>Add a comment:</p>
+		<textarea id="myComment" rows="6" cols="50"></textarea>
+		<button id="addComment">Comment</button>
+		</div>
+	</body>
+</html>

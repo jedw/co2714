@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Vue</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+	.red {border: 2px solid red;}
+	.green {border: 2px solid green;}
+</style>
+</head>
+<body>
+<div id="root">
+
+<p v-text="email">
+</p>
+<br>
+<input v-model="email" :class="[email.length < 2 ? 'red' : 'green']">
+<br>
+<button onclick="alert('signed up')" :disabled="email.length <2">
+
+	Submit
+</button>
+</div>
+<script>
+new Vue ({
+	el: '#root',
+	data: {
+		email: ''
+	}
+})
+</script>
+</body>
+</html>

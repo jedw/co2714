@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Vue</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+	.red {border: 2px solid red;}
+	.green {border: 2px solid green;}
+</style>
+</head>
+<body>
+<div id="root"> <!-- methods and actions -->
+<input v-model="newCat">
+<button v-on:click="addKitty">
++ add
+</button>
+	<table>
+	<tr><th>Name</th><th>Color</th></tr>
+	<tr v-for="cat in cats"><td>{{cat.name}}</td></tr>
+	</table>
+</div>
+<script>
+new Vue ({
+	el: '#root',
+	data: {
+		cats: [
+				{name: 'kitkat'},
+				{name: 'felix'},
+				{name: 'sylvester'},
+				{name: 'garfield'}
+			],
+		newCat	: ''
+	},
+	methods:{
+		addKitty: function(){
+			this.cats.push({name: this.newCat})
+		}
+	}
+})
+</script>
+</body>
+</html>

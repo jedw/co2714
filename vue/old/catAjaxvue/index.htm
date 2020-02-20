@@ -18,28 +18,34 @@
 <div id="root">
     <h1 class="display-3">Cats:</h1>
     <table class="table">
-        <tr v-for="cat in data"><td>{{cat}}</td></tr>
+        <tr v-for="cat in cats"><td>{{cat}}</td></tr>
     </table>
-    <button class="btn btn-primary" onclick="myFunction()">Click me to find cats</button>    
+    <button class="btn btn-primary" v-on:click="getCats">Click me to find cats</button>    
 </div>
 </div>
 <script>
 var app = new Vue({
     el:'#root',
     data:{
-            data: ["No Cats found"]
-    },                
+            cats: ["fred"]
+    },    
+    methods:{
+        getCats: function(){
+            var local;
+            $.ajax({
+                url: "cat.php", 
+                async:false,
+                success: function(data){
+                    local = data;
+                },
+                dataType:"json"
+            });  
+            this.cats = local;
+        }
+    }            
 })
                     
-function myFunction() {
-    $.ajax({
-            url: "cat.php", 
-            success: function(data){
-                app.data = data; 
-            },
-            dataType:"json"
-    });    
-}
+
 </script>
 </body>
 </html>

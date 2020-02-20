@@ -1,0 +1,22 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Vue</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+<div v-show="count ===1">
+	Green <!-- unlike v-if the element is still rendered but set to be invisible -->
+</div>
+</div>
+<script>
+new Vue ({
+el: '#root',
+data: {
+	count: 0
+}
+})
+</script>
+</body>
+</html>

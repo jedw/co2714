@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Vue</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+<div v-if="count === 1">
+	Green
+</div>
+<div v-else-if="count === 2">
+	Red
+</div>
+<div v-else>
+	Orange
+</div>
+
+</div>
+<script>
+new Vue ({
+el: '#root',
+data: {
+	count: 3
+}
+})
+</script>
+</body>
+</html>

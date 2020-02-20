@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Vue</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+
+Sign Up
+<br>
+<input v-model="email">
+<br>
+<button onclick="alert('signed up')">
+	Submit
+</button>
+</div>
+<script>
+new Vue ({
+el: '#root',
+data: {
+	email: ''
+}
+})
+</script>
+</body>
+</html>
