@@ -1,5 +1,5 @@
 <?php
-$_POST['li'] = "testin!!!!";
+
 	$servername = "localhost";
 	$username = "student";
 	$password = "website";
