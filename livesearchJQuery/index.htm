@@ -17,7 +17,7 @@
 		promise = [];		
 
 	$("#search").keyup(function(){
-        	var searchString = document.getElementById("search").value;
+        	var searchString = $("#search").val();
 		var dataString = 'search='+searchString;
 		promise.push($.ajax({
 			url: "staff.php",

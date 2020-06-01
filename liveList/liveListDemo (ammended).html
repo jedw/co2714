@@ -2,10 +2,12 @@
 <html lang="EN">
 <head>
 <title>Comment section</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 $(document).ready(function(){
+	var newListItem;
+	var dataString; 
 
 	$.ajax({
 		url: "retrieveListItems.php",
@@ -15,14 +17,14 @@ $(document).ready(function(){
 			});
 		},
 		datatype: "json"
-	});
+	});data
 
-	var newListItem;
+	
 	$("#addItem").click(function(){
 		newListItem = $("#newItem").val();
 		$("#myList").append("<li>"+newListItem+"</li>");
 		
-		var dataString = "li="+newListItem;
+		dataString = "li="+newListItem;
 		
 		$.ajax({
 			url: "insertListItems.php",

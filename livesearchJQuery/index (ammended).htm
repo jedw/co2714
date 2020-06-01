@@ -4,6 +4,9 @@
 <script>
 
     $(document).ready(function(){
+		var searchString;
+		var dataString;
+
 		$.ajax({
 			url: "staff.php", 
 			async: true,
@@ -17,8 +20,8 @@
 		});
 		
 		$("#search").keyup(function(){
-        	var searchString = document.getElementById("search").value;
-			var dataString = 'search='+searchString;
+        	searchString = $("#search").val();
+			dataString = 'search='+searchString;
 				$.ajax({
 				url: "staff.php",
 				type: "POST",
