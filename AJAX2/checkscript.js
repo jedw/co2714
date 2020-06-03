@@ -1,5 +1,5 @@
 function checkUser() {
-    var username = document.getElementById("uname").value;
+    var username = $("#uname").val();
     // retrieves the username from the HTML form
     var dataString = 'uname=' + username;
     // create the datastring we're going to need in our AJAX request, there could be multiple values passed here, but in this case just one
@@ -27,11 +27,11 @@ function checkUser() {
 }
 
 function checkempty(){
-  var fname = document.getElementById("fname").value;
-  var sname = document.getElementById("sname").value;
-  var uname = document.getElementById("uname").value;
-  var pword = document.getElementById("pword").value;
-  var email = document.getElementById("email").value;
+  var fname = $("#fname").val();
+  var sname = $("#sname").val();
+  var uname = $("#uname").val();
+  var pword = $("#pword").val();
+  var email = $("#email").val();
   
   if (fname === '' || sname === '' || uname === '' || pword === '' || email === '') {
     alert("Please Fill All Fields");

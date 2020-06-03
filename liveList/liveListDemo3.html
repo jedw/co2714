@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+<title>Live List</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+	
+	var listItems;
+
+    var promise = $.ajax({
+        url: "retrieveListItems.php",
+        success: function(data){
+            listItems = data;
+        },
+        datatype: "json"
+    });
+
+    promise.done(function(){
+        $.each(listItems, function(i, item) {
+            $("#myList").append("<li>"+item.thing+"</li>");
+        });
+    })
+
+	var newListItem;
+	$("#addItem").click(function(){
+		newListItem = $("#newItem").val();
+		$("#myList").append("<li>"+newListItem+"</li>");
+		
+		var dataString = "li="+newListItem;
+		
+		$.ajax({
+			url: "insertListItems.php",
+			type: "POST",
+			data: dataString,
+			success: function(data){
+				console.log('success');
+			}			
+		});
+	});
+});
+</script>
+
+</head>
+	<body>
+		
+		<div class="container">
+		<h1>Live list demo</h1>
+		<ul id="myList">
+			<!-- items will be added here -->
+		</ul>
+		
+		<input type="text" id="newItem"/>
+		<button id="addItem">Add Item</button>
+		</div>
+	</body>
+</html>
