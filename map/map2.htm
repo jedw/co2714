@@ -12,8 +12,8 @@ $(document).ready(function(){
         dataType: 'json',
         async: true,
         success: function (result) {
-			    $.each(result, function( index, value ) {
-					myPoints.push(value);
+			$.each(result, function( index, value ) {
+				myPoints.push(value);
 			});		
 		}
 	});
@@ -21,9 +21,9 @@ $(document).ready(function(){
 	function initialize() {
 		
 	var mapProp = {
-	center:new google.maps.LatLng(53.7633421,-2.7043016),
-	zoom:12,
-	mapTypeId:google.maps.MapTypeId.ROADMAP
+		center:new google.maps.LatLng(53.7633421,-2.7043016),
+		zoom:12,
+		mapTypeId:google.maps.MapTypeId.ROADMAP
 	};
 	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 	promise.done(function(){
 		for (i = 0; i < myPoints.length; i++) {
-		  marker = new google.maps.Marker({
+		    marker = new google.maps.Marker({
 			position: new google.maps.LatLng(myPoints[i].lat, myPoints[i].lon),
 			map: map,
 		  })
