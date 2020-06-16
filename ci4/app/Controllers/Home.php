@@ -23,11 +23,11 @@ class Home extends BaseController
         $model = new StudentModel();
  
         $data = [
-            'first_name' => $this->request->getVar('Fname'),
-            'last_name' => $this->request->getVar('Lname'),
-            'address' => $this->request->getVar('Address'),
-            'email' => $this->request->getVar('Email'),
-            'mobile' => $this->request->getVar('Mobile'),
+            'first_name' => $this->request->getPost('Fname'),
+            'last_name' => $this->request->getPost('Lname'),
+            'address' => $this->request->getPost('Address'),
+            'email' => $this->request->getPost('Email'),
+            'mobile' => $this->request->getPost('Mobile'),
         ];
 		$model->addNewStudent($data);
 		return redirect()->to(base_url('index.php/home/records')); 
@@ -46,11 +46,11 @@ class Home extends BaseController
         $model = new StudentModel();
  
         $data = [
-            'first_name' => $this->request->getVar('Fname'),
-            'last_name' => $this->request->getVar('Lname'),
-            'address' => $this->request->getVar('Address'),
-            'email' => $this->request->getVar('Email'),
-            'mobile' => $this->request->getVar('Mobile'),
+			'first_name' => $this->request->getPost('Fname'),
+            'last_name' => $this->request->getPost('Lname'),
+            'address' => $this->request->getPost('Address'),
+            'email' => $this->request->getPost('Email'),
+            'mobile' => $this->request->getPost('Mobile'),
 		];
 		$id = $this->request->uri->getSegment(3);
 		$model->updateStudentWhere($data, $id);

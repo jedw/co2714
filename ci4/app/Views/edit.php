@@ -22,7 +22,7 @@
         <?php include 'nav.php'; ?>
         <div class="container">
         <h1>Edit</h1>
-        <form method="post" name="frmAdd" action="<?php echo site_url('index.php/home/update/'.$student['id']);?>">
+        <form method="post" name="frmAdd" action="<?php echo site_url('home/update/'.$student['id']);?>">
         
         <div class="form-group">
                 <label for="Fname">First Name:</label>
