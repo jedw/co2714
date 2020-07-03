@@ -33,8 +33,11 @@
 
         $(document).ready(function(){
             Promise.all([promise1, promise2, promise3]).then((values) => {
-                $("#mydiv").html(values)
-            })
+                $.each(values, function(i,val){
+                        $("#mydiv").append(val);
+                }); 
+              
+            });
         });
         
     </script>

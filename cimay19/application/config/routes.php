@@ -54,6 +54,7 @@ $route['insert'] = 'mycontroller/insert';
 $route['check'] = 'mycontroller/check';
 $route['delete/(:any)'] = 'mycontroller/delete';
 $route['edit/(:any)'] = 'mycontroller/edit';
+$route['editpostback/(:any)'] = 'mycontroller/editpostback';
 
 $route['default_controller'] = 'mycontroller';
 $route['404_override'] = '';

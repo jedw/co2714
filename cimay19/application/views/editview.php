@@ -9,7 +9,7 @@
 	 <div class="container">
    <h1>Edit Record</h1>
    <?php //echo validation_errors(); ?>
-   <?php echo form_open("Mycontroller/edit_post/".$record[0]->ID); ?>
+   <?php echo form_open("editpostback/".$record[0]->ID); ?>
      <label for="forname">Forname:</label><br/>
      <input class="form-control" type="text" size="20" id="forname" name="forname" value="<?php echo $record[0]->Forname?>"/>
      <br/>
@@ -21,7 +21,7 @@
      <br/>
      <input class="btn btn-primary" type="submit" value="Update"/>
    </form>
-   <a href="/cimay16"> Back</a>
+   <a href="/cimay19"> Back</a>
    </div>
  </body>
 </html>

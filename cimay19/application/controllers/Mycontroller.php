@@ -45,7 +45,7 @@ class mycontroller extends CI_Controller {
 	}
     
     //update edited record
-	function edit_post(){
+	function editpostback(){
 		$id = $this->uri->segment(2);
 		  $data = array (
                     'Forname' => $this->input->post('forname'),

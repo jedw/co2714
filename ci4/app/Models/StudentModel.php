@@ -11,29 +11,24 @@ class StudentModel extends Model{
     protected $returnType = 'array';
     
     public function getAllStudents(){
-        $studentModel = new StudentModel;
-        $student = $studentModel->findAll();
+        $student = $this->findAll();
         return $student;
     }
 
     public function addnewStudent($data){
-        $studentModel = new StudentModel;
-        $studentModel->insert($data);
+        $this->insert($data);
     }
 
     public function getStudentWhere($id){
-        $studentModel = new StudentModel;
-        $data = $studentModel->where('id', $id)->first();
+        $data = $this->where('id', $id)->first();
         return $data;
     }
 
     public function deleteStudentWhere($id){
-        $studentModel = new StudentModel;
-        $studentModel->where('id', $id)->delete();
+        $this->where('id', $id)->delete();
     }
 
     public function updateStudentWhere($data, $id){
-        $studentModel = new StudentModel;
-        $studentModel->update($id, $data);
+        $this->update($id, $data);
     }
 }

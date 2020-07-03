@@ -10,14 +10,14 @@
         crossorigin="anonymous">
     </script>
     <script>
-        const promise = $.ajax({
+        const myPromise = $.ajax({
             url:"one.htm",
             success: function(data){
                 return data;
             }
         });
 
-        Promise.resolve(promise).then(function(value){
+        Promise.resolve(myPromise).then(function(value){
             $("#mydiv").html(value)
         })
     </script>
