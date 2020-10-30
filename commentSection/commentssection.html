@@ -8,18 +8,15 @@
 $(document).ready(function(){
 	
 	var comments;
-	var promise = [];
-	promise.push (
-		$.ajax({
+	const myPromise = $.ajax({
 			url: "retreiveComments.php",
 			success: function(data){
 				comments = data;
 			},
 			datatype: "json"
-		})
-	);
-	
-	$.when.apply($, promise).then(function(){
+		});
+
+	Promise.resolve(myPromise).then(function(){
 		$.each(comments, function(i, item) {
 			$("#comments").append("<div class=\"comment\">"+item.comment+"</div>");
 		});
@@ -58,7 +55,7 @@ $(document).ready(function(){
 	<body>
 		<h1>iStalkr.com</h1>
 		<div class="container">
-		<h3>Billybob McNuggets posted..</h3>
+		<h3>Billybob McNugget posted..</h3>
 		<div class="post">
 			<h2>"I definitely don't not disagree with these thar dooins' afoot. Down with the government. My opinions are important.. love me"</h2>
 		</div>

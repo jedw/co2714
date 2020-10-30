@@ -11,13 +11,14 @@
     </script>
     <script>
       
+      var myvariable;
         $.ajax({
             url:"one.htm",
             success: function(data){
-                $("#mydiv").html(data);
+              myvariable = data;
             }
         });
-
+        $("#mydiv").html(myvariable);
         
     </script>
 </head>

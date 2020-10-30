@@ -5,7 +5,6 @@ $username = "student";
 $password= "website";
 $dbasename = "mydatabase";
 
-
 // Create connection
 $mysqli = new mysqli($servername, $username, $password, $dbasename);
 

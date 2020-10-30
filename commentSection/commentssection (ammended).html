@@ -6,7 +6,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
-	
+	var newComment;
+
 	$.ajax({
 		url: "retreiveComments.php",
 		success: function(data){
@@ -17,13 +18,10 @@ $(document).ready(function(){
 		datatype: "json"
 	})
 	
-	var newComment;
 	$("#addComment").click(function(){
 		newComment = $("#myComment").val();
 		$("#comments").append("<div class=\"comment\">"+newComment+"</div>");
-		
 		var dataString = "com="+newComment;
-		
 		$.ajax({
 			url: "insertComment.php",
 			type: "POST",
@@ -50,7 +48,7 @@ $(document).ready(function(){
 	<body>
 		<h1>iStalkr.com</h1>
 		<div class="container">
-		<h3>Billybob McNuggets posted..</h3>
+		<h3>Billybob McNugget posted..</h3>
 		<div class="post">
 			<h2>"I definitely don't not disagree with these thar dooins' afoot. Down with the government. My opinions are important.. love me"</h2>
 		</div>

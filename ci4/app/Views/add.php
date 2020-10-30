@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="jumbotron">
-            <h1>Beckipedia</h1>
+            <h1>Sillipedia</h1>
             <p>
                 ..The
                 <a href="#">wrong encyclopedia</a>

@@ -22,7 +22,7 @@ class mymodel extends CI_Model {
     //gets one row from id from mytable
     public function getOneRow($id) {
 		$data = $this->db->get_where('mytable', array('ID' => $id))->result();
-		return $data;
+		return $data[0];
 	}
 
     //inserts row to mytable
