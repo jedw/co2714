@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+<title>Comment section</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+	var newComment;
+
+	$.ajax({
+		url: "backend.php"+"?mode=r",
+		success: function(data){
+			$.each(data, function(i, item) {
+				$("#comments").append('<div class="comment">'+item.comment+'</div>');
+			});
+		},
+		datatype: "json"
+	})
+	
+	$("#addComment").click(function(){
+		newComment = $("#myComment").val();
+		$("#comments").append('<div class="comment">'+newComment+'</div>');
+		var dataString = "com="+newComment;
+		$.ajax({
+			url: "backend.php"+"?mode=w",
+			type: "POST",
+			data: dataString,
+			success: function(data){
+				console.log('success');
+			}			
+		});
+	});
+});
+</script>
+<style>
+	body{
+		background-color: #4267B2;
+		color: #fff;
+	}
+	h1{
+		font-size:4em;
+		font-weight: bold;
+	}
+	.comment{
+		border-radius: 10px;
+		font-family:"georgia";
+		margin-top:1em;
+		border: solid 1px #444;
+		background-color: #fff;
+		color: #444;
+		padding:1em;
+	}
+	.post{
+		font-family:"georgia";
+		font-style:italic;
+	}
+	textarea {
+		border-radius: 25px;
+	}
+	button {
+		border-radius: 10px;
+	}
+</style>
+</head>
+	<body>
+		<h1>Faceache</h1>
+		<div class="container">
+		<h3>Billy Bob Nugget has just posted..</h3>
+		<div class="post">
+			<h2>"Jonathan is great, CO2714 is the best module!"</h2>
+		</div>
+		<div id="comments">
+			<!-- comments will be added here -->
+		</div>
+		<p>Add your comment below :</p>
+		<textarea id="myComment" rows="6" cols="50"></textarea>
+		<br>
+		<button id="addComment">Comment</button>
+		</div>
+	</body>
+</html>

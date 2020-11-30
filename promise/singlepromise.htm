@@ -12,13 +12,13 @@
     <script>
         const myPromise = $.ajax({
             url:"one.htm",
-            success: function(data){
-                return data;
+            success: function(jonny){
+                return jonny;
             }
         });
 
-        Promise.resolve(myPromise).then(function(value){
-            $("#mydiv").html(value)
+        Promise.resolve(myPromise).then(function(anything){
+            $("#mydiv").html(anything)
         })
     </script>
 </head>

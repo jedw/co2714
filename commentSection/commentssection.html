@@ -6,29 +6,22 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
-	
-	var comments;
-	const myPromise = $.ajax({
-			url: "retreiveComments.php",
-			success: function(data){
-				comments = data;
-			},
-			datatype: "json"
-		});
-
-	Promise.resolve(myPromise).then(function(){
-		$.each(comments, function(i, item) {
-			$("#comments").append("<div class=\"comment\">"+item.comment+"</div>");
-		});
-	});
-	
 	var newComment;
+
+	$.ajax({
+		url: "retreiveComments.php",
+		success: function(data){
+			$.each(data, function(i, item) {
+				$("#comments").append('<div class="comment">'+item.comment+'</div>');
+			});
+		},
+		datatype: "json"
+	})
+	
 	$("#addComment").click(function(){
 		newComment = $("#myComment").val();
-		$("#comments").append("<div class=\"comment\">"+newComment+"</div>");
-		
+		$("#comments").append('<div class="comment">'+newComment+'</div>');
 		var dataString = "com="+newComment;
-		
 		$.ajax({
 			url: "insertComment.php",
 			type: "POST",
@@ -41,29 +34,48 @@ $(document).ready(function(){
 });
 </script>
 <style>
+	body{
+		background-color: #4267B2;
+		color: #fff;
+	}
+	h1{
+		font-size:4em;
+		font-weight: bold;
+	}
 	.comment{
+		border-radius: 10px;
+		font-family:"georgia";
 		margin-top:1em;
-		border: solid 1px black;
+		border: solid 1px #444;
+		background-color: #fff;
+		color: #444;
 		padding:1em;
 	}
 	.post{
-		font-family:"Times New Roman";
+		font-family:"georgia";
 		font-style:italic;
+	}
+	textarea {
+		border-radius: 25px;
+	}
+	button {
+		border-radius: 10px;
 	}
 </style>
 </head>
 	<body>
-		<h1>iStalkr.com</h1>
+		<h1>Faceache</h1>
 		<div class="container">
-		<h3>Billybob McNugget posted..</h3>
+		<h3>Billy Bob Nugget has just posted..</h3>
 		<div class="post">
-			<h2>"I definitely don't not disagree with these thar dooins' afoot. Down with the government. My opinions are important.. love me"</h2>
+			<h2>"Jonathan is great, CO2714 is the best module!"</h2>
 		</div>
 		<div id="comments">
 			<!-- comments will be added here -->
 		</div>
-		<p>Add a comment:</p>
+		<p>Add your comment below :</p>
 		<textarea id="myComment" rows="6" cols="50"></textarea>
+		<br>
 		<button id="addComment">Comment</button>
 		</div>
 	</body>

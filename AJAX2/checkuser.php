@@ -1,5 +1,5 @@
 <?php
-$_POST['uname'] = "jedwards343";
+
 
 if (isset($_POST['uname'])) { //Check if form data has actually been posted
     $un   = $_POST['uname']; //Retrieve username from POST data

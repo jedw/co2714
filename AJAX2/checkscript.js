@@ -11,14 +11,14 @@ function checkUser() {
         success: function(data) {
           if (data.availability === false){ // checkuser.php will send us back a JSON response containing a value named availability
               $("#message").html("username is unavailable, please choose another"); // send a message to the user
-              //$("#uname").css("background-color","#f99"); // change the CSS to give user feedback
-              $("#uname").prop("class","form-control is-invalid");
+              $("#uname").css("background-color","#f99"); // change the CSS to give user feedback
+              
               $("#submit").prop('disabled',true); // disable the submit button
           }
           else if (data.availability === true){
               $("#message").html("username is available, please proceed"); // send a message to the user
-              //$("#uname").css("background-color","#9f9"); // change the CSS to give user feedback
-              $("#uname").prop("class","form-control is-valid");
+              $("#uname").css("background-color","#9f9"); // change the CSS to give user feedback
+              //$("#uname").prop("class","form-control is-valid");
               $("#submit").prop('disabled',false); // enable the submit button
           }
         }, 

@@ -12,7 +12,6 @@
 	}
 	
 	$query = $mysqli->query("SELECT * FROM chart");
-	
 	$chart = array();
 
 	while($row = $query->fetch_array()){
@@ -23,5 +22,4 @@
 
 	header("Content-type: application/json");
 	echo json_encode($chart);
-	die();
 ?>

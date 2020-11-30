@@ -6,22 +6,29 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
-	var newComment;
-
-	$.ajax({
-		url: "retreiveComments.php",
-		success: function(data){
-			$.each(data, function(i, item) {
-				$("#comments").append("<div class=\"comment\">"+item.comment+"</div>");
-			});
-		},
-		datatype: "json"
-	})
 	
+	var comments;
+	const myPromise = $.ajax({
+			url: "retreiveComments.php",
+			success: function(data){
+				comments = data;
+			},
+			datatype: "json"
+		});
+
+	Promise.resolve(myPromise).then(function(){
+		$.each(comments, function(i, item) {
+			$("#comments").append("<div class=\"comment\">"+item.comment+"</div>");
+		});
+	});
+	
+	var newComment;
 	$("#addComment").click(function(){
 		newComment = $("#myComment").val();
 		$("#comments").append("<div class=\"comment\">"+newComment+"</div>");
+		
 		var dataString = "com="+newComment;
+		
 		$.ajax({
 			url: "insertComment.php",
 			type: "POST",

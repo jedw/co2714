@@ -61,6 +61,7 @@ class mycontroller extends CI_Controller {
         $this->load->view('check');
     }
 
+    //IGNORE THIS BELOW
     //check if details can be found
     function check_post(){
         $data = array (

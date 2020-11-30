@@ -13,25 +13,23 @@ var myData = [];
 var myBColors = [];
 var myColors = [];
 
-    var chartData;
-	var promise = [];
-	promise.push (
-		$.ajax({
-			url: "retrieveChartData.php",
-			success: function(data){
-				chartData = data;
-			},
-			datatype: "json"
-		})
-	);
-	
-	$.when.apply($, promise).then(function(){
-		$.each(chartData, function(i, item) {
-			myLabels.push(item.label);
-            myData.push(item.data)
-            myColors.push(item.color)
-            myBColors.push(item.bcolor)
-		});
+var chartData;
+const myPromise = $.ajax({
+        url: "retrieveChartData.php",
+        success: function(data){
+            chartData = data;
+        },
+        datatype: "json"
+    });
+
+myPromise.done(function(){
+    $.each(chartData, function(i, item) {
+        myLabels.push(item.label);
+        myData.push(item.data)
+        myColors.push(item.color)
+        myBColors.push(item.bcolor)
+    }
+);
 
 var ctx = document.getElementById('myChart').getContext('2d');
 
