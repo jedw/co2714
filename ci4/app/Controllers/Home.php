@@ -19,9 +19,7 @@ class Home extends BaseController
 	}
 
 	public function store(){
-		helper(['form', 'url']);
         $model = new StudentModel();
- 
         $data = [
             'first_name' => $this->request->getPost('Fname'),
             'last_name' => $this->request->getPost('Lname'),
@@ -35,16 +33,13 @@ class Home extends BaseController
 
 	public function edit(){
 		$model = new StudentModel();
-		
 		$id = $this->request->uri->getSegment(3);
 		$data['student'] = $model->getStudentWhere($id);
 		return view('edit', $data);
 	}
 
 	public function update(){
-		helper(['form', 'url']);
         $model = new StudentModel();
- 
         $data = [
 			'first_name' => $this->request->getPost('Fname'),
             'last_name' => $this->request->getPost('Lname'),
@@ -59,7 +54,6 @@ class Home extends BaseController
 
 	public function delete(){
 		$model = new StudentModel();
-
 		$id = $this->request->uri->getSegment(3);
 		$model->deleteStudentWhere($id);
 		return redirect()->to(base_url('index.php/home/records')); 
