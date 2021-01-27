@@ -33,11 +33,16 @@
             
         });
     </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-    <ul id="things">
-    </ul>
+    <a href="<?php echo base_url();?>/index.php/Home/register">Username Availability Checker</a><br/>
+    <hr>
+    <h1>Live list</h1>
     <input type="text" name="thingtoinput" id="thingtoinput"/>
     <button id="submitbtn">Press to submit</button>
+    <ul id="things">
+    </ul>
 </body>
 </html>

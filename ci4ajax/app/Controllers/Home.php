@@ -37,7 +37,8 @@ class Home extends BaseController
 		{
 			$jsonReply['availability'] = false; 
         	return $this->response->setJSON($jsonReply);
-		} else
+		} 
+		else
 		{
 			$jsonReply['availability'] = true; 
         	return $this->response->setJSON($jsonReply);
