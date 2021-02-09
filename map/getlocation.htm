@@ -29,23 +29,20 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
 
-        function getLocation() {
-            if(navigator.geolocation)
-            {
+        function getLocation(){
+            if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(show_map);
             } 
-            else 
-            {
+            else {
                 alert("error");
             }
         }
 
         function show_map(position){
-            myCentre = new google.maps.LatLng(position.coords.latitude,      position.coords.longitude);
+            myCentre = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
             initialize();
         }
 
     </script>
-
 </body>
 </html>

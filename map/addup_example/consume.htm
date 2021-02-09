@@ -1,0 +1,46 @@
+<!--- this is completely pointless as if you wanted to add up two numbers you dont need a web service! you can do that client-side in javascript, this merely illustrates the concept by example -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addup</title>
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
+   <script>
+       $(document).ready(function(){
+            var a, b;
+            $("#submit").click(function(){
+                a = $("#a_input").val();
+                b = $("#b_input").val();
+
+                var dataString ="a="+a+"&b="+b;
+                console.log(dataString);
+                $.ajax({
+                    url: "addup2.php",
+                    method: "GET",
+                    data: dataString,
+                    success: function(data){
+                        $("#status").html(data.status)
+                        $("#answer").html(data.answer)
+                    },
+                    datatype: "json"
+                });
+            })    
+       });
+   </script>
+</head>
+<body>
+    <p>Status:</p>
+    <p id="status"></p>
+    <p>Answer: </p>
+    <p id="answer"></p>
+
+    a: <input id="a_input" type="text"/> <br/>
+    b: <input id="b_input" type="text"/> <br/>
+    <input type="submit" id="submit"/>
+</body>
+</html>
