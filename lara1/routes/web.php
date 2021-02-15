@@ -45,6 +45,8 @@ Route::get('about/{myVariable}', function($myVariable){
 
 Route::get('users', 'UserController@showusers');
 
+Route::get('testjson', 'UserController@testjson');
+
 Route::get('users/new', function()
 {
     return view('newuser');

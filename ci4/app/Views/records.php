@@ -36,14 +36,14 @@
             </tr></thead>
             <tbody>
             <?php
-                foreach($students_details as $sd){
+                foreach($students as $student){
             ?>
             <tr>
-                <td><?php echo $sd['first_name']; ?></td>
-                <td><?php echo $sd['last_name']; ?></td>
-                <td><?php echo $sd['email']; ?></td>
-                <td><?php echo $sd['mobile']; ?></td>
-                <td><a href="<?php echo site_url('home/edit/'.$sd['id']);?>">Edit</a>&nbsp;<a href="<?php echo site_url('home/delete/'.$sd['id']);?>">Delete</a></td>
+                <td><?php echo $student['first_name']; ?></td>
+                <td><?php echo $student['last_name']; ?></td>
+                <td><?php echo $student['email']; ?></td>
+                <td><?php echo $student['mobile']; ?></td>
+                <td><a href="<?php echo site_url('home/edit/'.$student['id']);?>">Edit</a>&nbsp;<a href="<?php echo site_url('home/delete/'.$student['id']);?>">Delete</a></td>
             </tr>
             <?php
             }

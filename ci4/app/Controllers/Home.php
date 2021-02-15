@@ -2,6 +2,7 @@
 
 use App\Models\StudentModel;
 
+
 class Home extends BaseController
 {
 	public function index(){
@@ -10,7 +11,7 @@ class Home extends BaseController
 
 	public function records(){
 		$model = new StudentModel();
-		$data['students_details'] = $model->getAllStudents();
+		$data['students'] = $model->getAllStudents();
 		return view('records', $data);
 	}
 

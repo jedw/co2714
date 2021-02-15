@@ -13,7 +13,7 @@ function checkUser() {
         console.log(dataString);
         $.ajax({ 
             type: "POST", 
-            url:  "http://localhost/co2714/ci4ajax/index.php/Home/checkUser", 
+            url:  "<?php echo base_url(); ?>/index.php/Home/checkUser", 
             data: dataString, 
             success: function(data) {
             if (data.availability === false){ 

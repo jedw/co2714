@@ -2,6 +2,7 @@
 
 use App\Models\AjaxModel;
 use App\Models\CheckUserModel;
+use App\Models\CoordinatesModel;
 
 class Home extends BaseController
 {
@@ -16,8 +17,8 @@ class Home extends BaseController
 	public function things()
 	{
 		$model = new AjaxModel();
-		$data = $model->getAllThings();
-		return $this->response->setJSON($data);
+		$response = $model->getAllThings();
+		return $this->response->setJSON($response);
 	}
 
 	public function addthing()
@@ -35,14 +36,26 @@ class Home extends BaseController
 
 		if ($check)
 		{
-			$jsonReply['availability'] = false; 
-        	return $this->response->setJSON($jsonReply);
+			$response['availability'] = false; 
+        	return $this->response->setJSON($response);
 		} 
 		else
 		{
-			$jsonReply['availability'] = true; 
-        	return $this->response->setJSON($jsonReply);
+			$response['availability'] = true; 
+        	return $this->response->setJSON($response);
         }
+	}
+
+	public function coordinates()
+	{
+		$model = new CoordinatesModel();
+		$response = $model->getCoords();
+		return $this->response->setJSON($response);
+	}
+
+	public function map()
+	{
+		return view('map');
 	}
 	//--------------------------------------------------------------------
 }

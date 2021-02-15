@@ -17,13 +17,13 @@ if ($mysqli->connect_errno) {
 $sql = "SELECT team, lat, lon FROM coords";
 $result = $mysqli->query ($sql);
 
-$rows = array();
+$locations = array();
 
 while($row = $result->fetch_assoc()){
-	array_push($rows, $row);
+	array_push($locations, $row);
 }
 
 header("Content-type: application/json");
-echo json_encode($rows);
+echo json_encode($locations);
 
 ?>

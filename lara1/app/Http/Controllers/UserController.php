@@ -9,7 +9,13 @@ class UserController extends Controller
 {
     Public function showusers()
     {
-        Return view('users')->with('allusers', User::all());
+        return view('users')->with('allusers', User::all());
+    }
+
+    Public function testjson()
+    {
+        $users = User::all();
+        return response()->json($users);
     }
 
     Public function newuser()
