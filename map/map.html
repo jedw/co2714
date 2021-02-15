@@ -13,8 +13,8 @@
 					dataType: 'json',
 					async: true,
 					success: function (result) {
-						$.each(result, function( index, value ) {
-							points.push(value);
+						$.each(result, function(index, point) {
+							points.push(point);
 						});		
 					}
 				});		
@@ -26,13 +26,13 @@
 					};
 					var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 					promise.done(function(){
-						points.forEach(function(point){
+						$.each(points,function(index, point){ 
 							marker = new google.maps.Marker({
 								position: new google.maps.LatLng(point.lat, point.lon),
 								title: points.team,
 								map: map,
-							}) 
-						})
+							}); 
+						});
 					});
 				}
 				google.maps.event.addDomListener(window, 'load', initialize);			
