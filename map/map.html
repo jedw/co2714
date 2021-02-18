@@ -8,10 +8,12 @@
 			var points = [];	
 			var marker;
 			$(document).ready(function(){
+				datastring="Team=Team%20Amesome";
 				var promise = $.ajax({
 					url: 'location.php',
+					data: datastring,
+					type: "POST",
 					dataType: 'json',
-					async: true,
 					success: function (result) {
 						$.each(result, function(index, point) {
 							points.push(point);
@@ -29,7 +31,7 @@
 						$.each(points,function(index, point){ 
 							marker = new google.maps.Marker({
 								position: new google.maps.LatLng(point.lat, point.lon),
-								title: points.team,
+								title: point.team,
 								map: map,
 							}); 
 						});

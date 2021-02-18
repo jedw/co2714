@@ -6,6 +6,16 @@ use App\Models\CoordinatesModel;
 
 class Home extends BaseController
 {
+	protected $ajaxModel;
+	protected $coordinatesModel;
+	protected $checkUserModel;
+
+	public function __construct(){
+		$this->ajaxModel = new ajaxModel;
+		$this->coordinatesModel = new CoordinatesModel;
+		$this->checkUserModel = new checkUserModel;
+	}
+	
 	public function index(){
 		return view('home');
 	}
@@ -16,23 +26,20 @@ class Home extends BaseController
 
 	public function things()
 	{
-		$model = new AjaxModel();
-		$response = $model->getAllThings();
+		$response = $this->ajaxModel->getAllThings();
 		return $this->response->setJSON($response);
 	}
 
 	public function addthing()
 	{
-		$model = new AjaxModel();
 		$things['thing'] = $this->request->getPost('thing');
-		$model->addNewThing($things);
+		$this->ajaxModel->addNewThing($things);
 	}
 
 	public function checkUser()
 	{
 		$user = $this->request->getPost('uname');
-		$model = new CheckUserModel();
-		$check = $model->getUserWhere($user);
+		$check = $this->checkUserModel->getUserWhere($user);
 
 		if ($check)
 		{
@@ -48,14 +55,22 @@ class Home extends BaseController
 
 	public function coordinates()
 	{
-		$model = new CoordinatesModel();
-		$response = $model->getCoords();
+		$response = $this->coordinatesModel->getCoords();
 		return $this->response->setJSON($response);
 	}
 
 	public function map()
 	{
 		return view('map');
+	}
+
+	public function test()
+	{
+		$response = array(
+			'name' => 'Rebecca',
+			'nationality' => 'UK',
+		);
+		return $this->response->setJSON($response);
 	}
 	//--------------------------------------------------------------------
 }

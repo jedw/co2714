@@ -5,13 +5,18 @@ use App\Models\StudentModel;
 
 class Home extends BaseController
 {
+	public $model;
+	public function __construct()
+    {
+		$this->model = new StudentModel();
+	}
+
 	public function index(){
 		return view('welcome_message');
 	}
 
 	public function records(){
-		$model = new StudentModel();
-		$data['students'] = $model->getAllStudents();
+		$data['students'] = $this->model->getAllStudents();
 		return view('records', $data);
 	}
 
@@ -20,7 +25,6 @@ class Home extends BaseController
 	}
 
 	public function store(){
-        $model = new StudentModel();
         $data = [
             'first_name' => $this->request->getPost('Fname'),
             'last_name' => $this->request->getPost('Lname'),
@@ -28,19 +32,17 @@ class Home extends BaseController
             'email' => $this->request->getPost('Email'),
             'mobile' => $this->request->getPost('Mobile'),
         ];
-		$model->addNewStudent($data);
+		$this->model->addNewStudent($data);
 		return redirect()->to(base_url('index.php/home/records')); 
 	}
 
 	public function edit(){
-		$model = new StudentModel();
 		$id = $this->request->uri->getSegment(3);
-		$data['student'] = $model->getStudentWhere($id);
+		$data['student'] = $this->$model->getStudentWhere($id);
 		return view('edit', $data);
 	}
 
 	public function update(){
-        $model = new StudentModel();
         $data = [
 			'first_name' => $this->request->getPost('Fname'),
             'last_name' => $this->request->getPost('Lname'),
@@ -49,14 +51,13 @@ class Home extends BaseController
             'mobile' => $this->request->getPost('Mobile'),
 		];
 		$id = $this->request->uri->getSegment(3);
-		$model->updateStudentWhere($data, $id);
+		$this->model->updateStudentWhere($data, $id);
 		return redirect()->to(base_url('index.php/home/records')); 
 	}
 
 	public function delete(){
-		$model = new StudentModel();
 		$id = $this->request->uri->getSegment(3);
-		$model->deleteStudentWhere($id);
+		$thig->model->deleteStudentWhere($id);
 		return redirect()->to(base_url('index.php/home/records')); 
 	}
 	//--------------------------------------------------------------------
