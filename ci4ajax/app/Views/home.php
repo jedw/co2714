@@ -8,7 +8,7 @@
 <script>
     $(document).ready(function(){
         $.ajax({
-            url:"<?php echo base_url(); ?>/index.php/Home/things",
+            url:"index.php/Home/things",
             success: function(data){   
                 $.each(data, function(i, item){
                     $("#things").append("<li>"+item.thing+"</li>");
@@ -21,7 +21,7 @@
             var newThing = $("#thingtoinput").val();
             var datastring = "thing="+newThing;
             $.ajax({
-                url:"<?php echo base_url(); ?>/index.php/Home/addthing",
+                url:"index.php/Home/addthing",
                 data: datastring,
                 type: "POST",
                 success: function(data){   

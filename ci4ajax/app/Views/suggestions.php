@@ -14,9 +14,13 @@
 			  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 			  crossorigin="anonymous"></script>
     <script>
+
         $(document).ready(function(){
+  
             var searchString;
             var dataString;
+            var clicked;
+
             $("#searchstring").keyup(function(){
                 searchString = $("#searchstring").val();
                 dataString = 'searchstring='+searchString;
@@ -28,12 +32,17 @@
                     data: dataString,
                     success: function(names){
                         $.each(names, function(i, name) {
-                            $("#suggestions ").append('<li><a href="#">'+name.firstname+' '+name.surname+'</a></li>')	
+                            $("#suggestions ").append('<li class="suggestion">'+name.firstname+' '+name.surname+'</li>');
                         });
                     },
                     dataType: "json"
                 });
             });
+
+            $("#suggestions").on("click", $(".suggestion"), function(){
+                clicked = $(".suggestion").html();
+                $("#searchstring").val(clicked); 
+            })
         });
     </script>
 
@@ -45,5 +54,6 @@
     <h2>Suggested searches:</h2>
     <ul id="suggestions">
     </ul>
+
 </body>
 </html>

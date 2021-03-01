@@ -9,7 +9,6 @@ $(document).ready(function() {
 });
 function checkUser() {
         var username = $("#uname").val();
-      
         var dataString = 'uname=' + username;
         console.log(dataString);
         $.ajax({ 
@@ -19,12 +18,14 @@ function checkUser() {
             success: function(data) {
             if (data.availability === false){ 
                 $("#message").html("username is unavailable, please choose another"); 
-                $("#uname").prop("class","form-control is-invalid");
+                $("#uname").css("color","red");
+                $("#message").css("color","red");
                 $("#submit").prop('disabled',true); 
             }
             else if (data.availability === true){
                 $("#message").html("username is available, please proceed"); 
-                $("#uname").prop("class","form-control is-valid");
+                $("#uname").css("color","green");
+                $("#message").css("color","green");
                 $("#submit").prop('disabled',false); 
             }
             }, 
