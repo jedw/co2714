@@ -9,6 +9,7 @@ $(document).ready(function() {
 });
 function checkUser() {
         var username = $("#uname").val();
+      
         var dataString = 'uname=' + username;
         console.log(dataString);
         $.ajax({ 

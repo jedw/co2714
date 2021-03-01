@@ -34,8 +34,9 @@
 </script>
 </head>
 <body>
-    <a href="<?php echo base_url();?>/index.php/Home/register">Username Availability Checker</a>
-    <a href="<?php echo base_url();?>/index.php/Home/map">Google maps from webservice</a><br/>
+    <a href="<?php echo base_url();?>/index.php/Home/register">Username Availability Checker</a><br>
+    <a href="<?php echo base_url();?>/index.php/Home/map">Google maps from webservice</a><br>
+    <a href="<?php echo base_url();?>/index.php/Home/search">Live search page</a><br>
     <hr>
     <h1>Live list</h1>
     <ul id="things">

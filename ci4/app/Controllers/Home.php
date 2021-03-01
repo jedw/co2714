@@ -5,7 +5,7 @@ use App\Models\StudentModel;
 
 class Home extends BaseController
 {
-	public $model;
+	protected $model;
 	public function __construct()
     {
 		$this->model = new StudentModel();
