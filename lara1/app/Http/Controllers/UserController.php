@@ -77,4 +77,19 @@ class UserController extends Controller
         $user->password = Request::get('newusername');
         $user->save();
     }
+
+    Public function availabilitycheck()
+    {
+        $username = Request::get('uname');
+        $response = User::where('username', $username)->first();
+        if ($response)
+        {
+            return response()->json(['availability' => 'false']);
+        }
+        else
+        {
+            return response()->json(['availability' => 'true']);
+        }
+        
+    }
 }

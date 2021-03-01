@@ -74,3 +74,9 @@ Route::get ('live', function()
 Route::get('ajaxgetthings', 'UserController@ajaxgetthings');
 
 Route::get('ajaxinsertnew', 'UserController@ajaxinsertnew');
+
+Route::get('availability', function(){
+    return view('availability');
+});
+
+Route::get('availabilitycheck', 'UserController@availabilitycheck');
