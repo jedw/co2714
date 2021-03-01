@@ -59,7 +59,9 @@ class UserController extends Controller
         {
             return NULL;
         }
-        $response = User::where('username', 'like', '%'.$searchString.'%')->get();
+        $response = User::where('username', 'like', '%'.$searchString.'%')
+                    ->orWhere('email', 'like', '%'.$searchString.'%')
+                    ->get();
         return response()->json($response);
     }
 
