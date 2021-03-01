@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
+<html lang="EN">
+<head>
+<title>Live List</title>
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -41,7 +34,7 @@
             }
 
             .content {
-                text-align: center;
+                text-align: left;
             }
 
             .title {
@@ -62,9 +55,41 @@
                 margin-bottom: 30px;
             }
         </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(document).ready(function(){
+	var newListItem;
+	var dataString; 
+
+	$.ajax({
+		url: "../ajaxgetthings",
+		success: function(users){
+			$.each(users, function(i, user) {
+				$("#myList").append("<li>"+user.username+"</li>");
+			});
+		},
+		datatype: "json"
+	});
+
+	$("#addItem").click(function(){
+		newListItem = $("#newItem").val();
+		$("#myList").append("<li>"+newListItem+"</li>");
+		dataString = "newusername="+newListItem;
+		$.ajax({
+			url: "../ajaxinsertnew",
+			type: "GET",
+			data: dataString,
+			success: function(data){
+				console.log('success');
+			}			
+		});
+	});
+});
+</script>
+
+</head>
+	<body>
+    <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -81,8 +106,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    About
-                    
+                    Laravel
                 </div>
 
                 <div class="links">
@@ -93,10 +117,17 @@
                     <a href="/search">Searchbar</a>
                     <a href="/live">Livelist</a>
                 </div>
-                @isset($data)
-        <p>{{$data}}</p>
-        @endisset
+                <h1>Live list demo</h1>
+		<ul id="myList">
+			<!-- items will be added here -->
+		</ul>
+		
+		<input type="text" id="newItem"/>
+		<button id="addItem">Add Item</button>
             </div>
         </div>
-    </body>
+		<div class="container">
+		
+		</div>
+	</body>
 </html>

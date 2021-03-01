@@ -59,3 +59,18 @@ Route::get('users/delete/{userId}', 'UserController@deleteuser');
 Route::get('users/edit/{userId}', 'UserController@edituser');
 
 Route::post('users/updateuser/{userId}', 'UserController@updateuser');
+
+Route::get('search', function(){
+    return view('search');
+});
+
+Route::get ('queryresults', 'UserController@queryresults');
+
+Route::get ('live', function()
+{
+    return view ('livelist');
+});
+
+Route::get('ajaxgetthings', 'UserController@ajaxgetthings');
+
+Route::get('ajaxinsertnew', 'UserController@ajaxinsertnew');

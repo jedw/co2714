@@ -86,9 +86,12 @@
                 </div>
 
                 <div class="links">
-                    <a href="users">Users</a>
-                    <a href="users/new">New User</a>
-                 
+                <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/users">Users</a>
+                    <a href="/users/new">New User</a>
+                    <a href="/search">Searchbar</a>
+                    <a href="/live">Livelist</a>
                 </div>
                 <div>
                     <br><br>

@@ -51,4 +51,30 @@ class UserController extends Controller
 
         return redirect('users');
     }
+
+    Public function queryresults()
+    {
+        $searchString = Request::post('searchstring');
+        if($searchString == "")
+        {
+            return NULL;
+        }
+        $response = User::where('username', 'like', '%'.$searchString.'%')->get();
+        return response()->json($response);
+    }
+
+    Public function ajaxgetthings()
+    {
+        $response = User::all();
+        return response()->json($response);
+    }
+
+    Public function ajaxinsertnew()
+    {
+        $user = new User;
+        $user->username = Request::get('newusername');
+        $user->email = Request::get('newusername')."@email.com";
+        $user->password = Request::get('newusername');
+        $user->save();
+    }
 }

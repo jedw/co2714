@@ -41,7 +41,7 @@
             }
 
             .content {
-                text-align: center;
+                text-align: left;
             }
 
             .title {
@@ -62,6 +62,33 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script
+			  src="https://code.jquery.com/jquery-3.5.1.js"
+			  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+			  crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function(){
+            var searchString;
+            var dataString;
+            $("#searchstring").keyup(function(){
+                searchString = $("#searchstring").val();
+                dataString = 'searchstring='+searchString;
+                $("#resultstable tr:gt(0)").remove();
+                console.log(dataString);
+                $.ajax({
+                    url: "../queryresults",
+                    type: "GET",
+                    data: dataString,
+                    success: function(names){
+                        $.each(names, function(i, name) {
+                            $("#resultstable ").append("<tr><td>"+name.username+"</td><td>"+name.email+"</td></tr>")	
+                        });
+                    },
+                    dataType: "json"
+                });
+            });
+        });
+    </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -81,8 +108,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    About
-                    
+                    Laravel
                 </div>
 
                 <div class="links">
@@ -93,10 +119,20 @@
                     <a href="/search">Searchbar</a>
                     <a href="/live">Livelist</a>
                 </div>
-                @isset($data)
-        <p>{{$data}}</p>
-        @endisset
+                <h1>User search:</h1>
+                    <label for="searchstring">Enter string here: </label>
+                    <input type="text" id="searchstring"/>
+                    <h2>Search results:</h2>
+                    <table id="resultstable">
+                        <thead>
+                            <tr><th>Username</th><th>Email</th><tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
             </div>
+            
         </div>
     </body>
 </html>
