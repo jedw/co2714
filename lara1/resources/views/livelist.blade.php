@@ -39,6 +39,7 @@
 
             .title {
                 font-size: 84px;
+                text-align: center;
             }
 
             .links > a {
@@ -106,7 +107,7 @@ $(document).ready(function(){
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Live List
                 </div>
 
                 <div class="links">

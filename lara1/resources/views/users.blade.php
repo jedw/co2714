@@ -50,7 +50,7 @@
             }
 
             .content table td, th{
-                padding:1em;
+                padding:5px;
             }
 
             .title {
@@ -104,7 +104,7 @@
                 </div>
                 <div>
                     <br><br>
-                    <table class="table-striped">
+                    <table>
                         <tr>
                             <th>Username</th>
                             <th>Password</th>
