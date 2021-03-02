@@ -43,7 +43,7 @@
                 <td><?php echo $student['last_name']; ?></td>
                 <td><?php echo $student['email']; ?></td>
                 <td><?php echo $student['mobile']; ?></td>
-                <td><a href="<?php echo site_url('home/edit/'.$student['id']);?>">Edit</a>&nbsp;<a href="<?php echo site_url('home/delete/'.$student['id']);?>">Delete</a></td>
+                <td><a href="<?php echo site_url('/edit/'.$student['id']);?>">Edit</a>&nbsp;<a href="<?php echo site_url('/delete/'.$student['id']);?>">Delete</a></td>
             </tr>
             <?php
             }

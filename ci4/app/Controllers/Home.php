@@ -37,8 +37,8 @@ class Home extends BaseController
 	}
 
 	public function edit(){
-		$id = $this->request->uri->getSegment(3);
-		$data['student'] = $this->$model->getStudentWhere($id);
+		$id = $this->request->uri->getSegment(2);
+		$data['student'] = $this->model->getStudentWhere($id);
 		return view('edit', $data);
 	}
 
@@ -56,8 +56,8 @@ class Home extends BaseController
 	}
 
 	public function delete(){
-		$id = $this->request->uri->getSegment(3);
-		$thig->model->deleteStudentWhere($id);
+		$id = $this->request->uri->getSegment(2);
+		$this->model->deleteStudentWhere($id);
 		return redirect()->to(base_url('index.php/home/records')); 
 	}
 	//--------------------------------------------------------------------

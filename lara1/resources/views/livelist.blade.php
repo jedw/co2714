@@ -4,58 +4,58 @@
 <title>Live List</title>
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    html, body {
+        background-color: #fff;
+        color: #000;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+        height: 100vh;
+        margin: 0;
+    }
 
-            .full-height {
-                height: 100vh;
-            }
+    .full-height {
+        height: 100vh;
+    }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
 
-            .position-ref {
-                position: relative;
-            }
+    .position-ref {
+        position: relative;
+    }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
 
-            .content {
-                text-align: left;
-            }
+    .content {
+        text-align: left;
+    }
 
-            .title {
-                font-size: 84px;
-                text-align: center;
-            }
+    .title {
+        font-size: 84px;
+        text-align: center;
+    }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+    .links > a {
+        color: #000;
+        padding: 0 25px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+    .m-b-md {
+        margin-bottom: 30px;
+    }
+</style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 $(document).ready(function(){
@@ -128,7 +128,6 @@ $(document).ready(function(){
             </div>
         </div>
 		<div class="container">
-		
 		</div>
 	</body>
 </html>
