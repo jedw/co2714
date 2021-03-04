@@ -17,17 +17,19 @@ class Login extends BaseController
 
     public function login_post()
     {
-        $data = [
-            'username' => $this->request->getPost('username'),
-        ];
-        $user = $this->model->login($data);
+        $un= $this->request->getPost('username');
+        $user = $this->model->login($un);
         if($user)
         {
             if(password_verify($this->request->getPost('password'), $user['password'] ))
             {
-                $_SESSION['login'] = true;
-                $_SESSION['role'] = 'user';
-                $_SESSION['username'] = $user['password'];
+                $session = \Config\Services::session();
+                $sessiondata = [
+                    'login' => true,
+                    'username' => $user['username'],
+                    'role' => 'member'
+                ];
+                $session->set($sessiondata);
                 return redirect()->to(base_url('index.php/secret')); 
             }
             else
@@ -59,6 +61,19 @@ class Login extends BaseController
 
     public function secret()
     {
-        return view ('secret');
+        
+        if (!$this->isloggedin())
+			return redirect()->to(base_url('index.php/login')); 
+        $session = \Config\Services::session();
+        $data['username'] = $session->get('username');
+        return view ('secret' , $data);
+        
+    }
+
+    public function logout()
+    {
+        $session = \Config\Services::session();
+        $session->destroy();
+        return redirect()->to(base_url('index.php/login')); 
     }
 }

@@ -12,7 +12,7 @@ Use \App\User;
 |
 */
 
-Route::get('createusers', function(){
+ /* Route::get('createusers', function(){
     Schema::create('users', function($newtable){
         $newtable->increments('id');
         $newtable->string('username', 35);
@@ -22,6 +22,16 @@ Route::get('createusers', function(){
     });
     return view('welcome');
 });
+
+Route::get('createlogin', function(){
+    Schema::create('logins', function($newtable){
+        $newtable->increments('id');
+        $newtable->string('username', 35);
+        $newtable->string('password', 255);
+        $newtable->timestamps();
+    });
+    return view('welcome');
+});  */
 
 Route::get('/', function () {
     return view('welcome');
@@ -80,3 +90,16 @@ Route::get('availability', function(){
 });
 
 Route::get('availabilitycheck', 'UserController@availabilitycheck');
+
+Route::get ('login', function(){
+    return view ('login');
+});
+
+Route::get ('register', function(){
+    return view ('register');
+});
+
+Route::post('login/register', 'LoginController@register');
+Route::post('login/login', 'LoginController@login');
+
+Route::get ('secret', 'LoginController@secret');

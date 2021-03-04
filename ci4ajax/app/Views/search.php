@@ -10,9 +10,10 @@
         }
     </style>
     <script
-			  src="https://code.jquery.com/jquery-3.5.1.js"
-			  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-			  crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
     <script>
         $(document).ready(function(){
             var searchString;
@@ -28,7 +29,7 @@
                     data: dataString,
                     success: function(names){
                         $.each(names, function(i, name) {
-                            $("#resultstable ").append("<tr><td>"+name.firstname+"</td><td>"+name.surname+"</td></tr>")	
+                            $("#resultstable").append("<tr><td>"+name.firstname+"</td><td>"+name.surname+"</td></tr>")	
                         });
                     },
                     dataType: "json"

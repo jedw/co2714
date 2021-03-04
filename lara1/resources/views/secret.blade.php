@@ -6,8 +6,7 @@
     <title>Secret</title>
 </head>
 <body>
-    <?php include 'nav.php'; ?>
-    <h1>Top secret members only area</h1>
-    <p>Welcome <?php echo $_SESSION['username']; ?></p>
+    <h1>Welcome</h1>
+    <p>this is the members area</p>
 </body>
 </html>

@@ -37,6 +37,8 @@ $routes->get('/delete/(:num)', 'Home::delete');
 $routes->get('/login', 'Login::login');
 $routes->get('/register', 'Login::register');
 $routes->get('/secret', 'Login::secret');
+$routes->get('/logout', 'Login::logout');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

@@ -43,4 +43,16 @@ class BaseController extends Controller
 		// $this->session = \Config\Services::session();
 	}
 
+	public function isloggedin()
+	{
+		$session = \Config\Services::session();
+		if (($session->get('login') === true) and ($session->get('role') === "member"))
+        {
+            return true;
+		}	
+		else
+		{
+			return false;
+		}
+	}
 }
