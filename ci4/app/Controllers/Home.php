@@ -5,34 +5,29 @@ use App\Models\StudentModel;
 class Home extends BaseController
 {
 	protected $model;
-	public function __construct()
-    {
+	public function __construct(){
 		$this->model = new StudentModel();
 		$this->session = \Config\Services::session();
 	}
 
-	public function index()
-	{
+	public function index(){
 		return view('welcome_message');
 	}
 
-	public function records()
-	{
+	public function records(){
 		if (!$this->isloggedin())
 			return redirect()->to(base_url('index.php/login')); 
 		$data['students'] = $this->model->getAllStudents();
 		return view('records', $data);
 	}
 
-	public function create()
-	{
+	public function create(){
 		if (!$this->isloggedin())
 			return redirect()->to(base_url('index.php/login')); 
 		return view('add');
 	}
 
-	public function store()
-	{
+	public function store(){
 		if (!$this->isloggedin())
 			return redirect()->to(base_url('index.php/login')); 
         $data = [
@@ -46,8 +41,7 @@ class Home extends BaseController
 		return redirect()->to(base_url('index.php/home/records')); 
 	}
 
-	public function edit()
-	{
+	public function edit(){
 		if (!$this->isloggedin())
 			return $this->response->setStatusCode(404, "404 not found");
 		$id = $this->request->uri->getSegment(2);
@@ -55,8 +49,7 @@ class Home extends BaseController
 		return view('edit', $data);
 	}
 
-	public function update()
-	{
+	public function update(){
 		if (!$this->isloggedin())
 			return $this->response->setStatusCode(404, "404 not found");
         $data = [
@@ -71,8 +64,7 @@ class Home extends BaseController
 		return redirect()->to(base_url('index.php/home/records')); 
 	}
 
-	public function delete()
-	{
+	public function delete(){
 		if (!$this->isloggedin())
 			$this->response->setStatusCode(404, "404 not found");
 		$id = $this->request->uri->getSegment(2);

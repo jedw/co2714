@@ -6,7 +6,6 @@
             rel="stylesheet"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
             crossorigin="anonymous"> 
-
         <meta charset="utf-8">
         <meta name="viewport" content="with=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -17,9 +16,9 @@
         <div class="jumbotron">
             <h1>Sillipedia</h1>
             <p>
-                ..The
+                    ..The
                 <a href="#">wrong encyclopedia</a>
-                that
+                    that
                 <a href="#">nobody can edit</a>
             </p>
         </div>
